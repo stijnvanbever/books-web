@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Books</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+		crossorigin="anonymous"></script>
+    <script src="js/index.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+
+<body>
+	<h1>Books</h1>
+	<div>
+		<input text="text" id="filterAuthor" onkeyup="filterContent(this, 'bookauthor')" placeholder="Filter Author" />
+		<input text="text" id="filterName" onkeyup="filterContent(this, 'bookname')" placeholder="Filter Name" />
+	</div>
+
+    <div>
+        <table id="books" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Author</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="booksBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    
+    <!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	  New Book
+	</button>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	    <form method="POST" action="http://localhost:8080/books-rest/webapi/books" id="addbookform">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">New Book</h4>
+	      </div>
+	      <div class="modal-body">
+            <div class="form-group">
+                <label for="bookAuthor">Author</label>
+                <input type="text" class="form-control" required id="bookAuthor" placeholder="Author" name="author">
+            </div>
+            <div class="form-group">
+                <label for="bookName">Name</label>
+                <input type="text" class="form-control" required id="bookName" placeholder="Name" name="name">
+            </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Add book</button>
+	      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+</body>
+
+</html>
